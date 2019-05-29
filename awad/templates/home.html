@@ -1,16 +1,25 @@
 
 {% extends 'base.html' %}
+{% load static %}
+
 {% load bootstrap4 %}
 {% block content %}
 {{ block.super }}
 
+
+<div id="landing-img" class=" d-flex align-items-start" >
+        <img style="width:100%; height:600px;      -webkit-filter: brightness(40%);
+        "class="w-100 d-flex align-self-center; " src="{%  static 'img/landing.jpg'  %}" alt="sdfwfsdvads">
+    </div>
+
+<div class="container-fluid" id="pro" style="padding:50px; font-size: 50px">
+        <h5 style="font-size:25px;"><strong>Nominees</strong> We need your vote!</h5>
+        <div class="row">
+
 {% for data in project %}
 
 <div class="container-fluid home-content">
-<div id="landing-img" class=" d-flex align-items-start" >
-    <img style="width:100%; height:600px;      -webkit-filter: brightness(40%);
-    "class="w-100 d-flex align-self-center; " src="{{ data.landing_image.url }}" alt="sdfwfsdvads">
-</div>
+
     <!-- <h5 style="color:black">Site of the day {{date|date:"l d-F Y"}}</h5>
 
          
@@ -49,21 +58,18 @@
 
     </section> -->
 </div>
-<div class="container-fluid" id="pro" style="padding:50px; font-size: 50px">
-    <h5 style="font-size:25px;"><strong>Nominees</strong> We need your vote!</h5>
-    <div class="row">
 
-        <div class="col-md-4" id="data">
-                
+        <div class="col-md-3" id="data" style="position:relative;float:left; padding: 20px; float: left;">
+   
             <div class="hovereffect">
-                <img class="img-responsive" src="{{data.image.url}}" alt="Card image cap" width="100%;" heigth="300px;">
+                <img class="img-responsive" src="{{data.image.url}}" alt="Card image cap" style=" width: 100%; height:300px; position:relative;" >
                 <!-- <div class="overlay">
                     <a class="info" href="/">VOTE NOW</a>
                 </div> -->
             </div>
+            <div class="card-header">
             <h5 class="card-title" style="padding-top:5px;">{{data.detailed_description}}</h5>
 
-            <div class="card-header">
                 <h5 class="card-title"> <strong>{{data.project_name}}</strong></h5>
                 <a href="{{data.project_url}}" class="card-text" target="blank">
                     <buttton class="btn btn-outline-primary"  style="position:relative; bottom:30px;">Visit site</button>
@@ -72,7 +78,7 @@
 
             </div>
 
-            <div class="card-footer">
+            <!-- <div class="card-footer">
                     <a href="profile/{{data.profile.user.username}}/">
                         <div class="row">
                             <div class="">
@@ -84,7 +90,7 @@
                             
                         </div>
                     </a>
-            </div>
+            </div> -->
         </div>
 
         {% endfor %}
