@@ -13,6 +13,7 @@ urlpatterns=[
     url(r'^api/profile/$', views.ProfileList.as_view()),
     url(r'^upload/$', views.upload_project, name='upload_project'),
     url(r'^rate/(?P<project_id>\d+)',views.rate_project, name='rate'),
+    url(r'^vote/(?P<project_id>\d+)',views.vote, name='vote'),
 
 
 ]

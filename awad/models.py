@@ -13,6 +13,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True,null=True,)
     bio = models.CharField(max_length=256, default='Edit profile for your bio')
     profile_pic = models.ImageField(upload_to='pictures/',  default="default.jpeg", null=True)
+    rate = models.ManyToManyField('Project', related_name='imag',max_length=30)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):

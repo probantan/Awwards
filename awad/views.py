@@ -8,7 +8,7 @@ from .serializer import ProfileSerializer,ProjectSerializer
 from rest_framework.response import Response
 # from .forms import LoginForm
 from django.contrib.auth.decorators import login_required
-from .forms import  ProfileUpdateForm,UserUpdateForm,ProjectForm
+from .forms import  ProfileUpdateForm,UserUpdateForm,ProjectForm,RateForm
 from django.contrib import messages
 import datetime as dt
 
@@ -107,3 +107,29 @@ def rate_project(request,project_id):
     else:
         rateform = RateForm()
     return render(request,'rate.html',locals())
+
+def view_rate(request,project_id):
+    user = User.objects.get(username=request.user)
+    project = Project.objects.get(pk=project_id)
+    rate = Rate.objects.filter(project_id=project_id)
+    print(rate)
+    return render(request,'project.html',locals())
+def rate(request):
+    profile = User.objects.get(username=request.user)
+    return render(request,'rate.html',locals())
+
+
+
+@login_required(login_url='/accounts/login/')
+def vote(request,project_id):
+   try:
+       project = Project.objects.get(pk=project_id)
+       rate = Rate.objects.filter(project_id=project_id).all()
+       print([r.project_id for r in rate])
+       rateform = RateForm()
+   except DoesNotExist:
+       raise Http404()
+   return render(request,"project.html", locals())
+
+
+    
