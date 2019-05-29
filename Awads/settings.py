@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     'bootstrap3',
+    'bootstrap4',
+
     'awad',
     'crispy_forms',
     'django.contrib.admin',
