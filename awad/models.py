@@ -35,7 +35,7 @@ class Project(models.Model):
     profile = models.ForeignKey(Profile, null = True,related_name='project')
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
-    landing_image = models.ImageField(upload_to='site-images/', null=True,blank=True)
+    # landing_image = models.ImageField(upload_to='site-images/', null=True,blank=True)
 
 
     class Meta:
