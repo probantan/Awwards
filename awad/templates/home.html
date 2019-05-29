@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %} {{block.super}}
+{% load static %}
+
+<h1>IPAWWWARDS</h1>
+<div>
+    {% for project in projects %}
+        <h3>{{project.title}}</h3>
+        <h6>{{ project.category }}</h6>
+        <img src="{{ project.image.url }}">
+        <p>{{ project.detailed_description }}</p>
+        <span>{{ project.repo_link }} {{ project.deployed_link }}</span>
+    {% endfor %}
+{% endblock %}
+
+</div>

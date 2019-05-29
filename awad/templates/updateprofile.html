@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+{% load crispy_forms_tags %}
+
+{{block.super}}
+<div class="container" >
+<div  style=" position: relative; left: 100px; ">
+<form method="POST" enctype="multipart/form-data"style="position:relative; left: 300px; " >
+    {% csrf_token %}
+    <fieldset class="form-group" style=" width: 500px; position: relative;">
+        <h2>Profile Info</h2>
+        {{ u_form|crispy }}
+        {{ p_form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit" style="font-size:medium; background-color:green;color:white">Update</button>
+    </div>
+</form>
+</div>
+</div>
+{% endblock %}
