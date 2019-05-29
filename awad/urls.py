@@ -10,7 +10,8 @@ urlpatterns=[
     url(r'^$', views.home, name='home'),
     url(r'^profile/', views.profile, name='profile'),
     url(r'^update/profile$', views.updateprofile, name='updateprofile'),
-    url(r'^api/profile/$', views.ProfileList.as_view())
+    url(r'^api/profile/$', views.ProfileList.as_view()),
+    url(r'^upload/$', views.upload_project, name='upload_project'),
 
 
 ]

@@ -8,13 +8,30 @@ from .serializer import ProfileSerializer,ProjectSerializer
 from rest_framework.response import Response
 # from .forms import LoginForm
 from django.contrib.auth.decorators import login_required
-from .forms import  ProfileUpdateForm,UserUpdateForm
+from .forms import  ProfileUpdateForm,UserUpdateForm,ProjectForm
 from django.contrib import messages
+import datetime as dt
+
 
 # Create your views here.
-def home (request):
-    projects = Project.objects.all()
-    return render(request, 'home.html', {"projects": projects})   
+def home(request):
+    date = dt.date.today()
+    project = Project.objects.all()
+    # profile = User.objects.get(username=request.user)
+    return render(request,'home.html',locals())
+ 
+@login_required(login_url='/accounts/login')
+def upload_project(request):
+    if request.method == 'POST':
+        uploadform = ProjectForm(request.POST, request.FILES)
+        if uploadform.is_valid():
+            upload = uploadform.save(commit=False)
+            upload.profile = request.user.profile
+            upload.save()
+            return redirect('home')
+    else:
+        uploadform = ProjectForm()
+    return render(request,'update-project.html',locals())
 
 
 @login_required(login_url='/accounts/login/')

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from . models import Profile
+from . models import Profile, Project
 # from .models import Profile
 
 # class ProfileForm(forms.ModelForm):
@@ -13,6 +13,10 @@ class LoginForm(forms.Form):
     password=forms.CharField()       
 
 
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['user', 'pub_date', 'profile', 'landing_image']
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
