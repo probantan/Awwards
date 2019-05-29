@@ -32,7 +32,6 @@ class Project(models.Model):
     image=models.ImageField(upload_to='projects/', blank=True)
     detailed_description=models.TextField()
     project_url = models.CharField(max_length =50)
-    category=models.ForeignKey(Category,related_name='category',null=True, blank=True, on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile, null = True,related_name='project')
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     user= models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
