@@ -48,30 +48,33 @@
 
 <div id="landing-img" class=" d-flex align-items-start" >
         <img style="width:100%; height:600px; top:-50px;position: relative;    
-        "class="w-100 d-flex align-self-center; " src="{%  static 'img/and.png'  %}" alt="">
+        "class="w-100 d-flex align-self-center; " src="/" alt="">
     </div>
 
 <div class="container-fluid" id="pro" style="padding:50px; font-size: 50px">
         <h5 style="font-size:25px; top:-500px; position: relative"><strong>Nominees</strong> We need your vote!</h5>
-        <div class="row">
                 <div class="row">
                         {% for data in project %}
                 
-                        <div class="col-md-4" id="data" style="padding-bottom:20px; width:1200px; height:650px;top: -450px; position: relative" >
+                        <div class="col-md-4" id="data" style="padding-bottom:20px; width:100px; height:650px;top: -450px; position: relative" >
+
                             <div class="hovereffect">
-                                <img class="img-responsive" src="{{data.image.url}}" alt="Card image cap" width="100%;" heigth="300px;">
+
+                                <img class="img-responsive" src="{{data.image.url}}" alt="Card image cap" >
                                 <div class="overlay">
                                     <a class="info" href="{% url 'vote' data.pk %}" style="font-size:25px;">VOTE NOW</a>
                                 </div>
+
                             </div>
                             <div class="card-header">
-                                    <h2 style="position:relative;padding-top:50px">{{data.detailed_description}}</h2>
+                            <h1 class="card-title" style="position:relative; top:-20px;">{{data.project_name}}</h1>
 
-                                <h1 class="card-title" style="position:relative; top:-20px;">{{data.project_name}}</h1>
-                                <small class="text-muted" style="font-size:15px; position:relative;bottom:-26px;right: 70px;" > Posted {{data.pub_date|timesince}} ago by: <strong>{{data.profile.user.username}}</small></strong>
+                            <h2 style="position:relative;top:-115px">{{data.detailed_description}}</h2>
+
+                                <small class="text-muted" style="font-size:15px; position:relative;bottom:30px;right: 5px;" > Posted {{data.pub_date|timesince}} ago by: <strong>{{data.profile.user.username}}</small></strong>
 
                                 <a href="{{data.project_url}}" class="card-text" target="blank">
-                                <buttton class="btn btn-outline-primary" style="position:relative;top:25px; right:70px; font-size:15px;" >Visit site</button>
+                                <buttton class="btn btn-outline-primary" style="position:relative;top:-70px; right:280px; font-size:15px;" >Visit site</button>
                                 </a>
                             </div>
                             <div class="card-footer">
