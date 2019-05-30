@@ -28,7 +28,7 @@ Awwwards Clone IP
 
 ### Cloning the repository
 ```bash
-git clone git@github.com:probantan/Insta.git && cd Instagram
+git clone git@github.com:probantan/Awwards.git && cd awwwads
 ```
 
 ### Creating a virtual environment
