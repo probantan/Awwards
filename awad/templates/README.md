@@ -78,4 +78,3 @@ python manage.py test
 
 
 ### License
-Copyright (c) {year} **{Morings Schoo
