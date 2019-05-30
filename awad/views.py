@@ -35,11 +35,12 @@ def upload_project(request):
     else:
         uploadform = ProjectForm()
     return render(request,'update-project.html',locals())
-
+@login_required(login_url='/accounts/login')
 def view_project(request):
     project = Project.objects.get_all()
     return render(request,'home.html', locals())    
-
+def logout(request):
+    return render(request, 'home.html')
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -69,10 +70,11 @@ def updateprofile(request):
 
      }
     return render(request, 'updateprofile.html', context)    
-
+@login_required(login_url='/accounts/login')
 def rate(request):
     profile = User.objects.get(username=request.user)
     return render(request,'rate.html',locals())
+@login_required(login_url='/accounts/login')
 
 def view_rate(request,project_id):
     user = User.objects.get(username=request.user)
