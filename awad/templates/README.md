@@ -1,42 +1,84 @@
 Awwwards Clone IP
-This project has been developed by:
+Insta
+===================
+## Description
+```Insta``` is a clone of instagram app (https://instagram.com), where users can post  pics, like , comment and follow each other.
 
-Victor Ireri
+------------------------------------------------------------------------
 
-Languages And Framework Used
-Django framework has been used in the development of this project and the languages used include, the framework is build in python language and is extreemly flexible, versertail and scallable
+## User Requirements
 
-Vanilla Python - used for adding functionality to the app
+1. Sign in to the application to start using.
+2. Upload  pictures to the application.
+3. See my profile with all my pictures.
+5. Like a picture and leave a comment on it.
 
-Html Markup and has been used to write the markup
+## Features
 
-CSS is used for styling the app
++ [x] public user profiles
++ [x] Photo feed displaying user photos along with those users follows.
++ [x] Image editing: Filter, rotate and add caption to images during upload
++ [x] search functionality for users.
++ [x] Django admin dashboard for adding & managing posts and user accounts
++ [x] SSL encryption using letsencrypt and certbot
 
-bootstrap css framework has been used for the styling as well
 
-Javascript has been used to add to the ui experience by making things like popups when a user clicks on an image.
+## Getting started
 
-Project Description
-This is a project where once the user logs in, they can submit a website and have other people rate it. They can also create their own profile and be able to rate other peoples websites and review them. Users, can also move through the ranks by having their website voted as the site of the day. They can upgrade from user to jury once they rate a website accurately
 
-Users can click on website in the home page and go to the review page where they can rate and review the website
 
-Users can click on a user icon and go to their profile page where they can see all the websites another user has posted liked and collected
 
-Users can click on their own profile icon and go to their profile page where they can see all the websites another user has posted liked and collected
+### Cloning the repository
+```bash
+git clone git@github.com:probantan/Insta.git && cd Instagram
+```
 
-Users can like other websites
+### Creating a virtual environment
 
-Users can add other websites to their collections
+```bash
+python3 -m virtualenv virtual
+source virtual/bin/activate
+```
+### Installing dependencies
+```bash
+pip3 install -r requirements
+```
 
-a future objective of the website is to have Users click on any of the category buttons on the project to view other images in the same category as the one they are viewing at the moment
 
-Users can search for websites and see all the details about the website and its ratings
+### Database migrations
 
-If the user searches for an item that does not exist they will be redirected to the homepage a a king message will be shown telling them what they did wrong
+```bash
+python manage.py migrate
+```
 
-Set up instructions
-to start going through the images, simply click on this link to visit the website, or click here to visit the Git Hub repository for the project.
+### Running the server 
+```bash
+python manage.py runserver
+```
 
-copyright and license
-Copyright@MoringaSchool 2018
+### Admin Dashboard
+Use django admin to manage the different users and posts.
+
+### Deploying to heroku
+Refer to this guide: [deploying to heroku by Ben](https://gist.github.com/Benard18/01e28cfbd911f87c7df8ee33cbdaa593)
+
+## Running the tests
+```bash
+python manage.py test
+```
+
+
+
+
+## Technology used
+
+* [Python3.6](https://www.python.org/)
+* [Django 1.11](https://www.djangoproject.com/)
+* [Heroku](https://heroku.com)
+
+
+
+
+
+### License
+Copyright (c) {year} **{Morings Schoo
