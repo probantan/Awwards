@@ -9,9 +9,9 @@ Awwwards Clone IP
 ## User Requirements
 
 1. Sign in to the application to start using.
-2. Upload  pictures to the application.
+2. View other peopl's projects as well and rate them
 3. Be able to see and update my profile
-5. Like a picture and leave a comment on it.
+5. post a project and let other peole rate it for you
 
 ## Features
 
