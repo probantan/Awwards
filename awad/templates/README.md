@@ -2,7 +2,7 @@ Awwwards Clone IP
 ===================
 
 ## Description
-```Awwwds``` is a clone of Awwwwads app (https://instagram.com), where users can post  pics, like , comment and follow each other.
+```Awwwds``` is a clone of Awwwwads app (https://instagram.com), where users can login ,submit a website
 
 ------------------------------------------------------------------------
 
