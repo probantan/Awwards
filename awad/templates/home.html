@@ -57,7 +57,7 @@
                 <div class="row">
                         {% for data in project %}
                 
-                        <div class="col-md-4" id="data" style="padding-bottom:20px; width:300px; height:500px;top: -450px; position: relative" >
+                        <div class="col-md-4" id="data" style="padding-bottom:20px; width:1200px; height:650px;top: -450px; position: relative" >
                             <div class="hovereffect">
                                 <img class="img-responsive" src="{{data.image.url}}" alt="Card image cap" width="100%;" heigth="300px;">
                                 <div class="overlay">
@@ -65,11 +65,13 @@
                                 </div>
                             </div>
                             <div class="card-header">
-                                    <h2>{{data.detailed_description}}</h2>
+                                    <h2 style="position:relative;padding-top:50px">{{data.detailed_description}}</h2>
 
                                 <h1 class="card-title" style="position:relative; top:-20px;">{{data.project_name}}</h1>
+                                <small class="text-muted" style="font-size:15px; position:relative;bottom:-26px;right: 70px;" > Posted {{data.pub_date|timesince}} ago by: <strong>{{data.profile.user.username}}</small></strong>
+
                                 <a href="{{data.project_url}}" class="card-text" target="blank">
-                                <buttton class="btn btn-outline-primary" style="position:relative;top:25px; left:100px; font-size:15px;" >Visit site</button>
+                                <buttton class="btn btn-outline-primary" style="position:relative;top:25px; right:70px; font-size:15px;" >Visit site</button>
                                 </a>
                             </div>
                             <div class="card-footer">
@@ -81,7 +83,6 @@
    
                                                 {% endif %}
                                             </div>
-                                            <small class="text-muted" style="font-size:15px"> Posted {{data.pub_date|timesince}} ago by: <strong>{{user.username}}</small></strong>
 
 
                                             <div class="col-md-2" style="color:black;font-size: 10px;font-weight: bold;">
