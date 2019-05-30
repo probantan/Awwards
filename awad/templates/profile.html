@@ -37,23 +37,23 @@
 
 
     <div>
-        {% for post in posts %}
-        <p>{{ post.name }}</p>
-        <div class="container w-100">
-            <img class="w-100" src="{{ post.landing_image.url }}" alt="">
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-6">
-        <h4>Related Links</h4>
-        <p>
-            <a href="">My Pastes</a> <br>
-            <a href="">Settings</a> <br>
-            <a href="">Change Password.</a> <br>
-        </p>
-    </div>
-
-</div>
+            <div class="row">
+                    {% for item in pro %}
+                    <div class="col-md-4" id="data">
+                        <img class="img-responsive" src="{{item.image.url}}" alt="Card image cap" width="100%;" heigth="300px;">
+                    </div>
+                    <div class="card-header">
+                        <h5 class="card-title">{{item.project_name}}</h5>
+                        <a href="{{item.project_url}}" class="card-text">
+                            <buttton class="btn btn-outline-primary">Visit site</button>
+                        </a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{data.pub_date|timesince}}</small>
+                    </div>
+                    {% endfor %}
+                </div>
+        
+            </div>
 
 {% endblock %}

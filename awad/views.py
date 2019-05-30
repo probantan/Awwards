@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.shortcuts import render,redirect,get_object_or_404
+
 from django.shortcuts import HttpResponse, render, redirect, get_object_or_404, reverse, get_list_or_404 
-from .models import Project, Profile
+from .models import Project, Profile, Rate
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from .serializer import ProfileSerializer,ProjectSerializer
@@ -11,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import  ProfileUpdateForm,UserUpdateForm,ProjectForm,RateForm
 from django.contrib import messages
 import datetime as dt
+from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
@@ -33,11 +36,16 @@ def upload_project(request):
         uploadform = ProjectForm()
     return render(request,'update-project.html',locals())
 
+def view_project(request):
+    project = Project.objects.get_all()
+    return render(request,'home.html', locals())    
+
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    
-    return render(request, 'profiles/profile.html')
+    pro = Project.objects.all()
+
+    return render(request, 'profiles/profile.html', locals())
 
 
 @login_required(login_url='/accounts/login/')
@@ -62,6 +70,49 @@ def updateprofile(request):
      }
     return render(request, 'updateprofile.html', context)    
 
+def rate(request):
+    profile = User.objects.get(username=request.user)
+    return render(request,'rate.html',locals())
+
+def view_rate(request,project_id):
+    user = User.objects.get(username=request.user)
+    project = Project.objects.get(pk=project_id)
+    rate = Rate.objects.filter(project_id=project_id)
+    print(rate)
+    return render(request,'project.html',locals())
+
+
+
+@login_required(login_url='/accounts/login')
+def rate_project(request,project_id):
+    project = Project.objects.get(pk=project_id)
+    profile = User.objects.get(username=request.user)
+    if request.method == 'POST':
+        rateform = RateForm(request.POST, request.FILES)
+        print(rateform.errors)
+        if rateform.is_valid():
+            rating = rateform.save(commit=False)
+            rating.project = project
+            rating.user = request.user
+            rating.save()
+            return redirect('vote',project_id)
+    else:
+        rateform = RateForm()
+    return render(request,'rate.html',locals())
+
+
+
+
+@login_required(login_url='/accounts/login/')
+def vote(request,project_id):
+   try:
+       project = Project.objects.get(pk=project_id)
+       rate = Rate.objects.filter(project_id=project_id).all()
+       print([r.project_id for r in rate])
+       rateform = RateForm()
+   except ObjectDoesNotExist:
+       raise Http404()
+   return render(request,"project.html", locals())
 
 class ProfileList(APIView):
     def get(self, request, format=None):
@@ -91,45 +142,5 @@ class ProjectList(APIView):
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     
     # permission_classes = (IsAdminOrReadOnly,)
-@login_required(login_url='/accounts/login')
-def rate_project(request,project_id):
-    project = Project.objects.get(pk=project_id)
-    profile = User.objects.get(username=request.user)
-    if request.method == 'POST':
-        rateform = RateForm(request.POST, request.FILES)
-        print(rateform.errors)
-        if rateform.is_valid():
-            rating = rateform.save(commit=False)
-            rating.project = project
-            rating.user = request.user
-            rating.save()
-            return redirect('vote',project_id)
-    else:
-        rateform = RateForm()
-    return render(request,'rate.html',locals())
-
-def view_rate(request,project_id):
-    user = User.objects.get(username=request.user)
-    project = Project.objects.get(pk=project_id)
-    rate = Rate.objects.filter(project_id=project_id)
-    print(rate)
-    return render(request,'project.html',locals())
-def rate(request):
-    profile = User.objects.get(username=request.user)
-    return render(request,'rate.html',locals())
-
-
-
-@login_required(login_url='/accounts/login/')
-def vote(request,project_id):
-   try:
-       project = Project.objects.get(pk=project_id)
-       rate = Rate.objects.filter(project_id=project_id).all()
-       print([r.project_id for r in rate])
-       rateform = RateForm()
-   except DoesNotExist:
-       raise Http404()
-   return render(request,"project.html", locals())
-
 
     
