@@ -54,8 +54,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### Admin Dashboard
-Use django admin to manage the different users and posts.
+
 
 ### Deploying to heroku
 Refer to this guide: [deploying to heroku by Ben](https://gist.github.com/Benard18/01e28cfbd911f87c7df8ee33cbdaa593)
