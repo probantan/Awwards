@@ -31,7 +31,7 @@ MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 # Application definition
-# Application definition
+
 INSTALLED_APPS = [
     'rest_framework',
     'bootstrap3',
@@ -100,9 +100,10 @@ else:
             default=config('DATABASE_URL')
         )
     }
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())    
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -154,6 +155,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
 # Configure Django App for Heroku.
 django_heroku.settings(locals())# django_heroku.settings(lo
